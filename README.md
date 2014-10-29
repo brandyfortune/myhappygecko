@@ -1,4 +1,4 @@
-myhappygecko
+My Happy Gecko
 ============
 
 #### Introduction
