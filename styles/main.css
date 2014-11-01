@@ -1,4 +1,7 @@
 /* main styles */
 .test {
-  color: #FF0000;
+  color: #ff0000;
+}
+.borderTest {
+  background: #FF0000;
 }
