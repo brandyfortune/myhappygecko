@@ -1,7 +1,23 @@
 /* main styles */
-.test {
-  color: #ff0000;
+body { 
+    background: #F4F4F4;
+    background-image: url('../images/mhg-topBG.gif');
+    background-repeat: repeat-x; 
+    margin: 0;
+    padding: 0;
 }
-.borderTest {
-  background: #FF0000;
+
+
+.logo {
+	padding-left:30px;
+	padding-top:30px;
+
+}
+
+
+.bigGecko {
+	float:right;
+	padding-top:30px;
+	padding-right:30;
+
 }
