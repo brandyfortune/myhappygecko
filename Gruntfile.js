@@ -10,7 +10,7 @@ module.exports = function (grunt) {
    grunt.loadNpmTasks('grunt-contrib-connect');
    
     var tasks = {
-        MAIN_LESS_FILE: 'main.less',
+        MAIN_LESS_FILE: 'styles/main.less',
         MAIN_CSS_FILE: 'styles/main.css',
 
         less: {
@@ -18,17 +18,17 @@ module.exports = function (grunt) {
                 files: {
                   '<%= MAIN_CSS_FILE %>': '<%= MAIN_LESS_FILE %>'
                 }
-            },
-
-            prod: {
-                options: {
-                    compress: true,
-                    cleancss: true
-                },
-                files: {
-                    '<%= MAIN_CSS_FILE %>': '<%= MAIN_LESS_FILE =>'
-                }
             }
+
+            // prod: {
+            //     options: {
+            //         compress: true,
+            //         cleancss: true
+            //     },
+            //     files: {
+            //         '<%= MAIN_CSS_FILE %>': '<%= MAIN_LESS_FILE =>'
+            //     }
+            // }
         },
 
         watch: {
@@ -58,9 +58,15 @@ module.exports = function (grunt) {
 
     grunt.initConfig(tasks);
 
-    grunt.registerTask('default',           'Compiles your less, and watches for future changes.',
-                                            function()
-                                            {
-                                                grunt.task.run(['less:dev', 'connect']);
-                                            });
+    // grunt.registerTask('default',           'Compiles your less, and watches for future changes.',
+    //                                         function()
+    //                                         {
+    //                                             grunt.task.run(['less:dev', 'connect']);
+    //                                         });
+
+    grunt.registerTask('default', 'Comipiles your LESS to CSS',
+                        function()
+                        {
+                            grunt.task.run('less:dev');
+                        });
 };
