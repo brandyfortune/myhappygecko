@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     
    grunt.loadNpmTasks('grunt-contrib-less');
    grunt.loadNpmTasks('grunt-contrib-watch');
-   grunt.loadNpmTasks('grunt-contrib-connect');
+   grunt.loadNpmTasks('grunt-express');
    
     var tasks = {
         MAIN_LESS_FILE: 'styles/main.less',
@@ -19,16 +19,6 @@ module.exports = function (grunt) {
                   '<%= MAIN_CSS_FILE %>': '<%= MAIN_LESS_FILE %>'
                 }
             }
-
-            // prod: {
-            //     options: {
-            //         compress: true,
-            //         cleancss: true
-            //     },
-            //     files: {
-            //         '<%= MAIN_CSS_FILE %>': '<%= MAIN_LESS_FILE =>'
-            //     }
-            // }
         },
 
         watch: {
@@ -42,15 +32,15 @@ module.exports = function (grunt) {
             }
         },
 
-        connect: {
-            serve: {
-                options: {
-                    open: true,
-                    livereload: true,
-                    hostname: 'localhost',
+        express: {
+            localServer:
+            {
+                options:
+                {
                     port: 8626,
-                    base: '.',
-                    keepalive: true
+                    bases: './',
+                    debug: true,
+                    open: true
                 }
             }
         },
@@ -58,15 +48,9 @@ module.exports = function (grunt) {
 
     grunt.initConfig(tasks);
 
-    // grunt.registerTask('default',           'Compiles your less, and watches for future changes.',
-    //                                         function()
-    //                                         {
-    //                                             grunt.task.run(['less:dev', 'connect']);
-    //                                         });
-
     grunt.registerTask('default', 'Comipiles your LESS to CSS',
-                        function()
-                        {
-                            grunt.task.run('less:dev');
-                        });
+                        ['less', 
+                            'express', 
+                            'express-keepalive', 
+                            'watch']);
 };
